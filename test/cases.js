@@ -13,32 +13,32 @@ cases.forEach(function(name) {
     var compressedFile = path.join(dir, 'compressed.css');
 
     it('should match ast.json', function() {
-      var ast = parseInput();
-      ast.should.containDeep(JSON.parse(readFile(astFile)));
+          var ast = parseInput();
+          ast.should.containDeep(JSON.parse(readFile(astFile)));
     });
 
     it('should match output.css', function() {
-      var output = stringify(parseInput());
-      output.should.equal(readFile(outputFile).trim());
+         var output = stringify(parseInput());
+         output.should.equal(readFile(outputFile).trim());
     });
 
     it('should match compressed.css', function() {
-      var compressed = stringify(parseInput(), { compress: true });
-      compressed.should.equal(readFile(compressedFile));
+          var compressed = stringify(parseInput(), { compress: true });
+          compressed.should.equal(readFile(compressedFile));
     });
 
     function parseInput() {
-      return parse(readFile(inputFile), { source: 'input.css' });
+          return parse(readFile(inputFile), { source: 'input.css' });
     }
   });
 });
 
 function readFile(file) {
-  var src = fs.readFileSync(file, 'utf8');
-  // normalize line endings
-  src = src.replace(/\r\n/, '\n');
-  // remove trailing newline
-  src = src.replace(/\n$/, '');
+      var src = fs.readFileSync(file, 'utf8');
+      // normalize line endings
+      src = src.replace(/\r\n/, '\n');
+      // remove trailing newline
+      src = src.replace(/\n$/, '');
 
   return src;
 }
